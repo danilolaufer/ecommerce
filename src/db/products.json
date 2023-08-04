@@ -1,0 +1,145 @@
+[
+    {
+      "id": 2,
+      "title": "HOKS JEANS TEMPO REGULAR",
+      "description": "Los pantalones Hocks siguen estrictamente el estilo de los que viven el auténtico Skate. La marca se preocupa por traer piezas de corte recto, las denominadas Large.",
+      "code": "hk01",
+      "price": 6900,
+      "status": true,
+      "stock": 10,
+      "category": "Indumentary",
+      "thumbnails": "https://images.tcdn.com.br/img/img_prod/775752/calca_hocks_jeans_tempo_regular_4085_1_f5a6c547273539429080f5272f75290a.jpg"
+    },
+    {
+      "id": 3,
+      "title": "SPITFIRE HOODIE BIGHEAD",
+      "description": "Hoddie color naranja, con estampa al frente.",
+      "code": "2Hoddie",
+      "price": 10000,
+      "status": true,
+      "stock": 5,
+      "category": "Indumentary",
+      "thumbnails": "https://dtskateboarding.vtexassets.com/arquivos/ids/161097-800-auto?v=638133702122470000&width=800&height=auto&aspect=true"
+    },
+    {
+      "id": 4,
+      "title": "TABLA CREATURE GRAPHIC MONSTER MOBILE 8",
+      "description": "Tabla Creature",
+      "code": "21Deck",
+      "price": 21300,
+      "status": true,
+      "stock": 9,
+      "category": "Deck Skate",
+      "thumbnails": "https://dtskateboarding.vtexassets.com/arquivos/ids/160516-800-auto?v=638007519038830000&width=800&height=auto&aspect=true"
+    },
+    {
+      "id": 5,
+      "title": "VANS X THE SIMPSONS",
+      "description": "Colaboración con Simpsons",
+      "code": "34VaS",
+      "price": 25000,
+      "status": true,
+      "stock": 8,
+      "category": "Shoes",
+      "thumbnails": "https://cdn-images.farfetch-contents.com/15/94/96/20/15949620_30950103_1000.jpg"
+    },
+    {
+      "id": 6,
+      "title": "PANTALÓN NEW BALANCE UNISSENTIAL SWEA",
+      "description": "Ofrece una expresión sin género del estilo clásico de esta marca.",
+      "code": "35NBPants",
+      "price": 15200,
+      "status": true,
+      "stock": 10,
+      "category": "Indumentary",
+      "thumbnails": "https://img01.ztat.net/article/spp-media-p1/c723a6f1de0346dd976c5d43c56d07c8/e72dd3597d22400698919565623f8442.jpg?imwidth=762"
+    },
+    {
+      "id": 7,
+      "title": "NIKE AIR FORCE",
+      "description": "blanca",
+      "code": "31AirF",
+      "price": 30000,
+      "status": true,
+      "stock": 12,
+      "category": "Shoes",
+      "thumbnails": "https://www.innvictus.com/medias/IN-CW2288-111-1.png?context=bWFzdGVyfGltYWdlc3w3NTUyMnxpbWFnZS9wbmd8aW1hZ2VzL2g4Zi9oM2QvOTk4MjE0ODkzNTcxMC5wbmd8MTIwMzc1NjM3NTc3ZjUyOGNkZDcyYjIwMDU0ODViOGIzN2NkNGY3ZDYyZWIzYWE1MTg2YjQ0MWJlOTQwODI0Mw"
+    },
+    {
+      "id": 9,
+      "title": "VANS X NatGeo",
+      "description": "Colaboración con NatGeo",
+      "code": "33VaNG",
+      "price": 20000,
+      "status": true,
+      "stock": 7,
+      "category": "Shoes",
+      "thumbnails": "https://http2.mlstatic.com/D_NQ_NP_714719-MLM43745650000_102020-O.webp"
+    },
+    {
+      "id": 10,
+      "title": "DECK CLEAVER MARTINEZ KEYS BLANCO",
+      "description": "Tabla skate Cleaver",
+      "code": "22Deck",
+      "price": 18200,
+      "status": true,
+      "stock": 12,
+      "category": "Deck Skate",
+      "thumbnails": "https://dtskateboarding.vtexassets.com/arquivos/ids/160701-800-auto?v=638026616837330000&width=800&height=auto&aspect=true"
+    },
+    {
+      "id": 11,
+      "title": "HOCKS POP LITE PANTERA",
+      "description": "Shoes color negro.",
+      "code": "1HKshoe",
+      "price": 35000,
+      "status": true,
+      "stock": 10,
+      "category": "Shoes",
+      "thumbnails": "https://images.tcdn.com.br/img/img_prod/775752/tenis_hocks_pop_lite_pantera_2105_1_03ba50d281057f9ab54fe63e8041364c.jpg"
+    },
+    {
+      "id": "81e01a20-0878-4417-83e2-68fd0930532a",
+      "status": true,
+      "thumbnails": "https://images.tcdn.com.br/img/img_prod/775752/calca_hocks_jeans_tempo_regular_4085_1_f5a6c547273539429080f5272f75290a.jpg",
+      "title": "Producto 13 ",
+      "description": "este es un producto de preuba",
+      "code": "327636",
+      "price": "10000",
+      "stock": "123",
+      "category": "electro"
+    },
+    {
+      "id": "195bae88-ce27-4921-a10d-fae7451cc599",
+      "status": true,
+      "thumbnails": "https://images.tcdn.com.br/img/img_prod/775752/calca_hocks_jeans_tempo_regular_4085_1_f5a6c547273539429080f5272f75290a.jpg",
+      "title": "Producto prueba",
+      "description": "este es un producto de preuba",
+      "code": "369697",
+      "price": "10000",
+      "stock": "1234234",
+      "category": "electro"
+    },
+    {
+      "id": "f3e82c6c-3408-40a7-bda2-091431ed77eb",
+      "status": true,
+      "thumbnails": "https://images.tcdn.com.br/img/img_prod/775752/calca_hocks_jeans_tempo_regular_4085_1_f5a6c547273539429080f5272f75290a.jpg",
+      "title": "poducto18",
+      "description": "este es un producto de preuba",
+      "code": "844297",
+      "price": "10000",
+      "stock": "432345",
+      "category": "electro"
+    },
+    {
+      "id": "a3aa7137-cfff-46cb-8bc6-aeb5e3fb7e4d",
+      "status": true,
+      "thumbnails": "https://images.tcdn.com.br/img/img_prod/775752/calca_hocks_jeans_tempo_regular_4085_1_f5a6c547273539429080f5272f75290a.jpg",
+      "title": "prod19",
+      "description": "este es un producto de preuba",
+      "code": "12345345",
+      "price": "10000",
+      "stock": "12",
+      "category": "electro"
+    }
+  ]

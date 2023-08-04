@@ -1,0 +1,29 @@
+p{
+    color: blue;
+}
+.title{
+    font-size: 50px;
+    text-align: center;
+}
+.anuncio{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 60px;
+}
+.img{
+    width: 40%;
+    height: 80%;
+}
+.btnHome{
+    background-color: #199319 ;
+    color: white ;
+    padding: 15px 25px ;
+    text-decoration: none ;  
+    font-weight:700 ;
+    border-radius: 10px;
+};
+
+a.btmHome:hover{
+     
+    color: rgb(1, 1, 1) !important;
+}

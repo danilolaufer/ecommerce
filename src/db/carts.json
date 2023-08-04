@@ -1,0 +1,31 @@
+[
+    {
+      "id": "cb047eff-9f79-474b-b806-41230d8cc38c",
+      "products": [
+        {
+          "idProduct": "11",
+          "quantity": 2
+        },
+        {
+          "idProduct": "12",
+          "quantity": 1
+        },
+        {
+          "idProduct": "1223",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "54e03b5d-6f0b-4584-917f-c4191baabae7",
+      "products": []
+    },
+    {
+      "id": "821afd74-52a4-4afc-9940-e8f77d820398",
+      "products": []
+    },
+    {
+      "id": "802f4808-fe1b-416b-84d7-fd9b2312a5cd",
+      "products": []
+    }
+  ]

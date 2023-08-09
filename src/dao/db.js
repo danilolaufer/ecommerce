@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 
   const connect = ()=>{
-    const URL = "mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/avanzado"
+    const URL = "mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/ecommerce"
     return mongoose.connect("mongodb+srv://nattileiva2012:More2408@backend.xu58awj.mongodb.net/Ecomerce?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true })
     .then(async(connection)=>{
       console.log("Conexion exitosa db !!! siiii");

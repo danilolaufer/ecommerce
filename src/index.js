@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors")
 const passport = require("passport")
 const session = require("express-session")
 const initializePassport = require("./config/passport")
@@ -20,7 +21,7 @@ const productManager = new ProductManager("src/db/products.json");
 const app = express();
 
 const PORT = process.env.PORT || 8080;
-
+app.use(cors())
 const httpServer = http.createServer(app);
 const socketServer = socketIO(httpServer);
 //Invocar la funcion para conectar mongoose
@@ -69,6 +70,9 @@ app.get("*", (req, res) => {
   res.status(404).json({ status: "error", msg: "Path not found" });
 });
 
+app.get("/home",(req, res)=>{
+  res.send({meASssage: "Entry pont", data: "Hola soy un HOME"})
+})
 
 
 

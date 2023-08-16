@@ -1,4 +1,5 @@
 const express = require("express");
+const dotenv = require("dotenv")
 const cors = require("cors")
 const passport = require("passport")
 const session = require("express-session")
@@ -74,7 +75,12 @@ app.get("/home",(req, res)=>{
   res.send({meASssage: "Entry pont", data: "Hola soy un HOME"})
 })
 
-
+dotenv.config({
+  path:"./.env.dev"
+})
+console.log(process.env.PORT);
+console.log(process.env.EMAIL);
+console.log(process.env.CLIENTID_GITHUB);
 
 httpServer.listen(PORT, () => {
   console.log(` Server listening on port: ${PORT}`);

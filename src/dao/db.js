@@ -1,12 +1,10 @@
-const express = require("express")
 const mongoose = require("mongoose");
 
 
 
 
   const connect = ()=>{
-    const URL = "mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/ecommerce"
-    return mongoose.connect("mongodb+srv://nattileiva2012:More2408@backend.xu58awj.mongodb.net/Ecomerce?retryWrites=true&w=majority", { useUnifiedTopology: true, useNewUrlParser: true })
+    return mongoose.connect("mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/ecommerce", { useUnifiedTopology: true, useNewUrlParser: true })
     .then(async(connection)=>{
       console.log("Conexion exitosa db !!! siiii");
 
@@ -25,8 +23,7 @@ const mongoose = require("mongoose");
 
 
 
-    })
-    .catch(err => console.log(err));
+    }).catch(err => console.log(err));
   }
 
 //exportar la funcion para incocarla en index.js

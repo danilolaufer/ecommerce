@@ -1,6 +1,6 @@
 
 const express= require("express")
-const {ProductModel} = require('../models/product')
+const {ProductModel} = require('./models/product')
 
 
 class ProductManagerMongo{

@@ -28,14 +28,14 @@ const socketServer = socketIO(httpServer);
 //Invocar la funcion para conectar mongoose
 connect()
 
-app.use(session({
-  store: MongoStore.create({
-      mongoUrl:"mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/ecommerce"
-  }),
-  secret:"danilosecreto",
-  resave: true,
-  saveUninitialized: true
-}))
+// app.use(session({
+//   store: MongoStore.create({
+//       mongoUrl:"mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/ecommerce"
+//   }),
+//   secret:"danilosecreto",
+//   resave: true,
+//   saveUninitialized: true
+// }))
 
 initializePassport()
 app.use(express.json());

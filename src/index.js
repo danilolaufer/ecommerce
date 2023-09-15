@@ -21,6 +21,7 @@ const{ homeRouter} = require("./routes/home.views");//----------------------corr
 const {ProductManager} = require("./controllers/productManager");//----------corregir importacion,Agregar {}
 const {connect} = require("./dao/managerMongo/db")//Importar la funcion connect para conectar mongoose
 const productManager = new ProductManager("src/db/products.json");
+const { developmentLogger, productionLogger } = require('./logger/logger');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -90,6 +91,24 @@ dotenv.config({
 console.log(process.env.PORT);
 console.log(process.env.EMAIL);
 console.log(process.env.CLIENTID_GITHUB);
+
+app.get('/loggerTest', (req, res) => {
+  developmentLogger.debug('Mensaje de depuración');
+  developmentLogger.http('Mensaje de registro HTTP');
+  developmentLogger.info('Mensaje informativo');
+  developmentLogger.warning('Mensaje de advertencia');
+  developmentLogger.error('Mensaje de error');
+  developmentLogger.fatal('Mensaje fatal');
+  
+  productionLogger.debug('Mensaje de depuración en producción');
+  productionLogger.http('Mensaje de registro HTTP en producción');
+  productionLogger.info('Mensaje informativo en producción');
+  productionLogger.warning('Mensaje de advertencia en producción');
+  productionLogger.error('Mensaje de error en producción');
+  productionLogger.fatal('Mensaje fatal en producción');
+  
+  res.send('Registros de prueba realizados.');
+});
 
 httpServer.listen(PORT, () => {
   console.log(` Server listening on port: ${PORT}`);

@@ -8,6 +8,8 @@ const cookiesParser = require("cookie-parser")
 const MongoStore = require('connect-mongo');
 const handlebars = require("express-handlebars");
 const http = require("http");
+const emailRouter = require("./routes/email.router")
+const smsRouter = require("./routes/sms.router")
 const ViewRoutes = require("./routes/view.routes")
 const AuthRoutes = require("./routes/auth.routes")
 const userRouter = require("./routes/user.routes")
@@ -17,7 +19,7 @@ const path = require("path");
 const{ realTimeRouter} = require("./routes/realTimeProducts.views");//----------corregir importacion,Agregar {}
 const{ homeRouter} = require("./routes/home.views");//----------------------corregir importacion,Agregar {}
 const {ProductManager} = require("./controllers/productManager");//----------corregir importacion,Agregar {}
-const {connect} = require("./dao/db")//Importar la funcion connect para conectar mongoose
+const {connect} = require("./dao/managerMongo/db")//Importar la funcion connect para conectar mongoose
 const productManager = new ProductManager("src/db/products.json");
 const app = express();
 
@@ -50,13 +52,20 @@ app.set("views", __dirname+"/views")
 
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(cookiesParser("coderS3cr3t0"))
-app.use("/api", indexRouter);
 
+//routes
+
+app.use("/api", indexRouter);
 app.use("/", homeRouter);
 app.use("/realtimeproducts", realTimeRouter);
 app.use("/view", ViewRoutes)
 app.use("/auth", AuthRoutes)
 app.use("/user", userRouter)
+//nodemailer
+app.use("/api/email", emailRouter)
+//twilio
+app.use("/api/sms", smsRouter)
+
 
 socketServer.on("connection", async (socket) => {
   console.log("Nuevo cliente conectado");

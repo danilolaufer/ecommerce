@@ -4,7 +4,7 @@ const cartsRouter = Router();
 // const { CartManager } = require("../controllers/cartManager");
 // const cartManager = new CartManager("src/db/carts.json");
 
-const { CartManagerMongo}  = require("../dao/managerMongo/cartManager")
+const { CartManagerMongo}  = require("../dao/fs/classes/CartsManager")
 const cartManager = new CartManagerMongo();
 
 cartsRouter.post("/", async (req, res) => {

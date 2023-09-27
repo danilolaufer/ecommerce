@@ -1,17 +1,31 @@
 const express = require("express");
+const mongoose = require("mongoose")
+const handlebars = require("express-handlebars");
+
+const cookiesParser = require("cookie-parser")
+
+//pasasport imports:
+const passport = require("passport")
+const initializePassport = require("./config/passport.config")
+const config = require("./config/config")
+const MongoSingleton = require("./config/mongodb-singleton")
+const {addLoger} = require("./config/logger")
+
+//routers:
+const studentRouter  = require('./routes/students.router.js')
+const coursesRouter  = require('./routes/courses.router.js')
+const viewsRouter = require("./routes/views.router")
+const usersViewRouter = require("./routes/user.view.router")
+const jwtRouter = require("./routes/jwt.router")
+
 const dotenv = require("dotenv")
 const cors = require("cors")
-const passport = require("passport")
 const session = require("express-session")
-const initializePassport = require("./config/passport")
-const cookiesParser = require("cookie-parser")
 const MongoStore = require('connect-mongo');
-const handlebars = require("express-handlebars");
 const http = require("http");
+const compression = require("express-compression")
 const emailRouter = require("./routes/email.router")
 const smsRouter = require("./routes/sms.router")
-const ViewRoutes = require("./routes/view.routes")
-const AuthRoutes = require("./routes/auth.routes")
 const userRouter = require("./routes/user.routes")
 const socketIO = require("socket.io");
 const {indexRouter} = require("./routes/index.router");//-----------------corregir importacion ,Agregar {}
@@ -21,28 +35,20 @@ const{ homeRouter} = require("./routes/home.views");//----------------------corr
 const {ProductManager} = require("./controllers/productManager");//----------corregir importacion,Agregar {}
 const {connect} = require("./dao/managerMongo/db")//Importar la funcion connect para conectar mongoose
 const productManager = new ProductManager("src/db/products.json");
-const { developmentLogger, productionLogger } = require('./logger/logger');
+const { developmentLogger, productionLogger } = require('./config/logger');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 app.use(cors())
 const httpServer = http.createServer(app);
 const socketServer = socketIO(httpServer);
-//Invocar la funcion para conectar mongoose
 connect()
-
-// app.use(session({
-//   store: MongoStore.create({
-//       mongoUrl:"mongodb+srv://danilolaura:resbalones123@clusterecommerce.0exvxqh.mongodb.net/ecommerce"
-//   }),
-//   secret:"danilosecreto",
-//   resave: true,
-//   saveUninitialized: true
-// }))
-
 initializePassport()
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -50,47 +56,25 @@ app.use(passport.session())
 app.engine("handlebars", handlebars.engine());//------------- Falto engine
 app.set("view engine", "handlebars");
 app.set("views", __dirname+"/views")
-
 app.use(express.static(path.join(__dirname, "/public")));
-app.use(cookiesParser("coderS3cr3t0"))
+
+app.use(cookiesParser("CoderS3cr3tC0d3"))
 
 //routes
 
 app.use("/api", indexRouter);
 app.use("/", homeRouter);
 app.use("/realtimeproducts", realTimeRouter);
-app.use("/view", ViewRoutes)
-app.use("/auth", AuthRoutes)
 app.use("/user", userRouter)
+app.use('/', viewsRouter);
+app.use("/api/students", studentRouter);
+app.use("/api/courses", coursesRouter);
+app.use("/users", usersViewRouter);
+app.use("/api/jwt", jwtRouter);
 //nodemailer
 app.use("/api/email", emailRouter)
 //twilio
 app.use("/api/sms", smsRouter)
-
-
-socketServer.on("connection", async (socket) => {
-  console.log("Nuevo cliente conectado");
-
-  socket.on("addProduct", async (data) => {
-    const added = await productManager.addProduct(data);
-    socketServer.emit("allProducts", await productManager.getProducts());
-  });
-});
-
-app.get("*", (req, res) => {
-  res.status(404).json({ status: "error", msg: "Path not found" });
-});
-
-app.get("/home",(req, res)=>{
-  res.send({meASssage: "Entry pont", data: "Hola soy un HOME"})
-})
-
-dotenv.config({
-  path:"./.env.dev"
-})
-console.log(process.env.PORT);
-console.log(process.env.EMAIL);
-console.log(process.env.CLIENTID_GITHUB);
 
 app.get('/loggerTest', (req, res) => {
   developmentLogger.debug('Mensaje de depuración');
@@ -109,7 +93,21 @@ app.get('/loggerTest', (req, res) => {
   
   res.send('Registros de prueba realizados.');
 });
+//GZIP
+app.use(compression())
 
-httpServer.listen(PORT, () => {
-  console.log(` Server listening on port: ${PORT}`);
+
+const SERVER_PORT = config.port;
+app.listen(SERVER_PORT, () => {
+    console.log("Servidor escuchando por el puerto: " + SERVER_PORT);
 });
+
+const mongoInstance = async () => {
+  try {
+      await MongoSingleton.getInstance();
+  } catch (error) {
+      console.error(error);
+      process.exit();
+  }
+};
+mongoInstance();

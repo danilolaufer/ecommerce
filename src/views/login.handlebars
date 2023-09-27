@@ -1,10 +1,13 @@
 <div>
-    <h1>Iniciar sesión</h1>
-        <form action="/auth/login" method="post">
-            <label for="">Nombre de usuario:</label>
-            <input type="text" name="user"><br>
-            <label for="">Contraseña:</label>
-            <input type="password" name="password"><br>
-            <input type="submit" value="Iniciar sesión">
-        </form>
+    <h1>Login de Estudiantes</h1>
+    <form id="loginForm">
+        <label>Email</label>
+        <input name="email">
+        <br/>
+        <label>Contraseña</label>
+        <input name="password">
+        <input type="submit">
+    </form>
+    <p>¿No estás registrado? <a href="/users/register">Regístrate aquí</a></p>
 </div>
+<script src="/js/login.js"></script>

@@ -8,4 +8,4 @@ router.get('/', getAll);
 
 router.post('/', createStudent);
 
-omdule.exports = router;
+module.exports = router;

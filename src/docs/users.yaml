@@ -1,0 +1,15 @@
+paths:
+  /api/users/:
+    get:
+      summary: Obtiene todos los usuarios disponibles en la app
+      tags:
+        - Users
+      responses:
+        "200":
+          description: los usuarios fueron obetenidos satisfactoriamente de la base de datos
+        "400":
+          description: wawn vuia un daot no esperado  
+        "500":
+          description: error itnerno edl servidor , usualmente generado  por una query defectuosa 
+
+

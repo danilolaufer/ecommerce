@@ -4,6 +4,7 @@ const handlebars = require("express-handlebars");
 
 const cookiesParser = require("cookie-parser")
 
+
 //pasasport imports:
 const passport = require("passport")
 const initializePassport = require("./config/passport.config")
@@ -35,7 +36,7 @@ const{ homeRouter} = require("./routes/home.views");//----------------------corr
 const {ProductManager} = require("./controllers/productManager");//----------corregir importacion,Agregar {}
 const {connect} = require("./dao/managerMongo/db")//Importar la funcion connect para conectar mongoose
 const productManager = new ProductManager("src/db/products.json");
-const { developmentLogger, productionLogger } = require('./config/logger');
+const { devLogger, prodLogger } = require('./config/logger');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
@@ -44,6 +45,24 @@ const httpServer = http.createServer(app);
 const socketServer = socketIO(httpServer);
 connect()
 initializePassport()
+
+//swaggger
+const swaggerJSDoc = require('swagger-jsdoc');
+const swaggerUIExpress = require('swagger-ui-express');
+
+const swaggerOptions = {
+	definition:{
+		openapi:"3.0.1",
+		info:{
+			title:"hola" ,
+			description:"swagger"
+		}
+	},
+	apis:[`${__dirname}./src/docs/doc.yaml`]
+}
+
+const specs = swaggerJSDoc(swaggerOptions);
+app.use("/apidocs", swaggerUIExpress.serve ,swaggerUIExpress.setup(specs))
 
 
 app.use(express.json());
@@ -77,19 +96,19 @@ app.use("/api/email", emailRouter)
 app.use("/api/sms", smsRouter)
 
 app.get('/loggerTest', (req, res) => {
-  developmentLogger.debug('Mensaje de depuración');
-  developmentLogger.http('Mensaje de registro HTTP');
-  developmentLogger.info('Mensaje informativo');
-  developmentLogger.warning('Mensaje de advertencia');
-  developmentLogger.error('Mensaje de error');
-  developmentLogger.fatal('Mensaje fatal');
+  devLogger.debug('Mensaje de depuración');
+  devLogger.http('Mensaje de registro HTTP');
+  devLogger.info('Mensaje informativo');
+  devLogger.warning('Mensaje de advertencia');
+  devLogger.error('Mensaje de error');
+  devLogger.fatal('Mensaje fatal');
   
-  productionLogger.debug('Mensaje de depuración en producción');
-  productionLogger.http('Mensaje de registro HTTP en producción');
-  productionLogger.info('Mensaje informativo en producción');
-  productionLogger.warning('Mensaje de advertencia en producción');
-  productionLogger.error('Mensaje de error en producción');
-  productionLogger.fatal('Mensaje fatal en producción');
+  prodLogger.debug('Mensaje de depuración en producción');
+  prodLogger.http('Mensaje de registro HTTP en producción');
+  prodLogger.info('Mensaje informativo en producción');
+  prodLogger.warning('Mensaje de advertencia en producción');
+  prodLogger.error('Mensaje de error en producción');
+  prodLogger.fatal('Mensaje fatal en producción');
   
   res.send('Registros de prueba realizados.');
 });

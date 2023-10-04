@@ -1,18 +1,14 @@
 const { fileURLToPath } = require('url');
 const { dirname } = require('path');
 
-// Imports para sesiones y autenticación:
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
-// Funciones de cifrado
-exports.createHash = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+const createHash = (password) => bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-exports.isValidPassword = (user, password) => {
+const isValidPassword = (user, password) => {
   console.log(`Datos a validar: user-password: ${user.password}, password: ${password}`);
   return bcrypt.compareSync(password, user.password);
 };
@@ -20,12 +16,12 @@ exports.isValidPassword = (user, password) => {
 // Funciones de JSON Web Tokens (JWT)
 const PRIVATE_KEY = "CoderhouseBackendCourseSecretKeyJWT";
 
-exports.generateJWToken = (user) => {
+const generateJWToken = (user) => {
   return jwt.sign({ user }, PRIVATE_KEY, { expiresIn: '120s' });
 };
 
 // Utilidad para llamadas más controladas de las estrategias de Passport
-exports.passportCall = (strategy) => {
+const passportCall = (strategy) => {
   return async (req, res, next) => {
     console.log("Entrando a llamar la estrategia: ");
     console.log(strategy);
@@ -42,5 +38,10 @@ exports.passportCall = (strategy) => {
   };
 };
 
-// Exporta __dirname
-module.exports = __dirname;
+module.exports = {
+  createHash,
+  isValidPassword,
+  PRIVATE_KEY,
+  generateJWToken,
+  passportCall,
+  __dirname}

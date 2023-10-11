@@ -18,6 +18,10 @@ const coursesRouter  = require('./routes/courses.router.js')
 const viewsRouter = require("./routes/views.router")
 const usersViewRouter = require("./routes/user.view.router")
 const jwtRouter = require("./routes/jwt.router")
+const productRouter  = require('./routes/products.router')
+const cartRouter  = require('./routes/carts.routes')
+const sessionRouter = require("./routes/sessions.router")
+
 
 const dotenv = require("dotenv")
 const cors = require("cors")
@@ -80,6 +84,9 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(cookiesParser("CoderS3cr3tC0d3"))
 
 //routes
+app.use("/api/products", productRouter)
+app.use("/api/carts", cartRouter)
+app.use("/api/sessions", sessionRouter)
 
 app.use("/api", indexRouter);
 app.use("/", homeRouter);

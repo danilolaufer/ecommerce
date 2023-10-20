@@ -21,6 +21,11 @@ const jwtRouter = require("./routes/jwt.router")
 const productRouter  = require('./routes/products.router')
 const cartRouter  = require('./routes/carts.routes')
 const sessionRouter = require("./routes/sessions.router")
+const express = require('express');
+const userRouter = require('./routes/userRouter');
+
+app.use('/api/users', userRouter);
+
 
 
 const dotenv = require("dotenv")
